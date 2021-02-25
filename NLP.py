@@ -1,33 +1,13 @@
 # -*- coding: utf-8 -*-
-"""
-Created on Mon Oct 26 16:26:00 2020
 
-@author: L01506162
-"""
+"""Código para realizar Procesamiento de Lenguaje Natural aplicando código de análisis de sentimientos de polaridad, de frecuencia, 
+   al final realizaremos un document-term matrix para alimentar un algoritmo que pueda generar texto a partir del input"""
 
-
-"""Código para descargar información de twitter, específicamente los tweets de 
-las personas, funciona con la developer account de twitter
-TEMA: Médicos COVID 19"""
 #importar data sets
 import os
 import tweepy as tw
 import pandas as pd
 
-#Cuentas de Usuario APIs
-consumer_key= 'NDg15Pcj9YTHFyqshQDeeioyR'
-consumer_secret= 'BMTcZl1izqY82a7dmoWT3ivlLafTBKj77DW405s6cAOkevsulM'
-access_token= '254343259-SYGQAuunVNS0DapShjKbnrpVA9tG4vNCB81VbtT1'
-access_token_secret= '6LvoLyVPOpznOsjLr3UWHp5NA7DzsEHzuUJt8vt6cK6AT'
-
-auth = tw.OAuthHandler(consumer_key, consumer_secret)
-auth.set_access_token(access_token, access_token_secret)
-api = tw.API(auth, wait_on_rate_limit=True)
-
-#Quitar Retweets
-new_search = "Medical+staff -filter:retweets"
-
-date_since = "2020-10-06"
 
 # Collect tweets 
 tweets = tw.Cursor(api.search,
